@@ -1,5 +1,6 @@
 ﻿@page "/"
 @namespace ElectronMegaCasting.Pages
+@model HostModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = null;
@@ -33,7 +34,12 @@
     <script src="_framework/blazor.server.js"></script>
     <script>
         function addToLocalStorage(key, value) { localStorage[key] = value; }
-        function readLocalStorage(key) { return localStorage[key];}
+        function readLocalStorage(key) { return localStorage[key]; }
+        //function addCookie(key, value, days) {
+        //    var date = new Date();
+        //    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        //    document.cookie = `${key}=${value}; expires=${date.toGMTString()}; path=/`;
+        //}
     </script>
 
 </body>

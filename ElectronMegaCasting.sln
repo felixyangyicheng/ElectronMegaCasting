@@ -5,6 +5,13 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectronMegaCasting", "ElectronMegaCasting\ElectronMegaCasting.csproj", "{B2922229-CCF4-47EF-8CAC-CA4BD4EFF072}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelMegaCasting", "ModelMegaCasting\ModelMegaCasting.csproj", "{D2031DDD-4560-4DA4-8C4E-C571AFDA6D9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiMegaCasting", "ApiMegaCasting\ApiMegaCasting.csproj", "{88A4603C-98A7-487A-803B-64EE86025B3D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D2031DDD-4560-4DA4-8C4E-C571AFDA6D9D} = {D2031DDD-4560-4DA4-8C4E-C571AFDA6D9D}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +22,14 @@ Global
 		{B2922229-CCF4-47EF-8CAC-CA4BD4EFF072}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2922229-CCF4-47EF-8CAC-CA4BD4EFF072}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2922229-CCF4-47EF-8CAC-CA4BD4EFF072}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2031DDD-4560-4DA4-8C4E-C571AFDA6D9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2031DDD-4560-4DA4-8C4E-C571AFDA6D9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2031DDD-4560-4DA4-8C4E-C571AFDA6D9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2031DDD-4560-4DA4-8C4E-C571AFDA6D9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88A4603C-98A7-487A-803B-64EE86025B3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88A4603C-98A7-487A-803B-64EE86025B3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88A4603C-98A7-487A-803B-64EE86025B3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88A4603C-98A7-487A-803B-64EE86025B3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

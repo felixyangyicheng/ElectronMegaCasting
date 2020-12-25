@@ -1,5 +1,6 @@
 ﻿@inherits LayoutComponentBase
 @inject IJSRuntime js
+@inject AppData appData
 <div class="page @GetCssClass() ">
     <div class="sidebar">
         <NavMenu />
@@ -30,6 +31,14 @@
     public string selectedTheme = "Léger";
     private List<string> themes = new List<string> { "Léger", "Foncé" };
     private readonly string keyTheme = "theme";
+
+    //protected override void OnInitialized()
+    //{
+    //    if (!string.IsNullOrEmpty(appData.Theme))
+    //    {
+    //        selectedTheme = appData.Theme;
+    //    }
+    //}
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {

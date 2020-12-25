@@ -1,0 +1,22 @@
+[
+  {
+    "ProfessionSectorId": 1,
+    "SectorName": "Créativité"
+  },
+  {
+    "ProfessionSectorId": 2,
+    "SectorName": "Réalisation"
+  },
+  {
+    "ProfessionSectorId": 3,
+    "SectorName": "Technicité"
+  },
+  {
+    "ProfessionSectorId": 4,
+    "SectorName": "Logistique"
+  },
+  {
+    "ProfessionSectorId": 5,
+    "SectorName": "Information"
+  }
+]
