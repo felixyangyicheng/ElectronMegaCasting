@@ -20,11 +20,11 @@ namespace ApiMegaCasting.Models
         public DbSet<Artist> Artists { get; set; }
         public DbSet<Contract> Contracts { get; set; }
         public DbSet<Offer> Offers { get; set; }
-        public DbSet<ProfessionSector> ProfessionSector { get; set; }
-        public DbSet<Profession> Profession { get; set; }
+        public DbSet<ProfessionSector> ProfessionSectors { get; set; }
+        public DbSet<Profession> Professions { get; set; }
 
-        public DbSet<Studio> Studio { get; set; }
-        public DbSet<DiffsionPartner> DiffsionPartner { get; set; }
+        public DbSet<Studio> Studios { get; set; }
+        public DbSet<DiffsionPartner> DiffsionPartners { get; set; }
         
         protected  override void OnModelCreating(ModelBuilder modelBuilder)
         {
