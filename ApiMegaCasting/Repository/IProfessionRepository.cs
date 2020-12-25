@@ -17,6 +17,7 @@ namespace ApiMegaCasting.Repository
         Task<Profession> UpdateProfession(Profession profession);
 
         Task<Profession> DeleteProfession(int professionId);
+        Task<Profession> GetProfessionByName(string name);
         Task<IEnumerable<Profession>> SearchProfession(string name);
     }
 }

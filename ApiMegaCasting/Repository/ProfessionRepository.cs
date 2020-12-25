@@ -1,4 +1,5 @@
 ﻿using ApiMegaCasting.Models;
+using Microsoft.EntityFrameworkCore;
 using ModelMegaCasting;
 using System;
 using System.Collections.Generic;
@@ -22,26 +23,59 @@ namespace ApiMegaCasting.Repository
             return result.Entity;
         }
 
-
-
-        public Task<Profession> GetProfession(int professionId)
+        public async Task<Profession> DeleteProfession(int professionId)
         {
-            throw new NotImplementedException();
+            var result = await _appDbContext.Professions.FirstOrDefaultAsync(p => p.ProfessionId == professionId);
+            if (result!=null)
+            {
+                _appDbContext.Professions.Remove(result);
+                await _appDbContext.SaveChangesAsync();
+                return result;
+            }
+            return null;
         }
 
-        public Task<IEnumerable<Profession>> GetProfessions()
+        public async Task<Profession> GetProfession(int professionId)
         {
-            throw new NotImplementedException();
+            return await _appDbContext.Professions
+                .Include(p => p.ProfessionSector)
+                .FirstOrDefaultAsync(p => p.ProfessionId == professionId);
         }
 
-        public Task<IEnumerable<Profession>> SearchProfession(string name)
+        public async Task<Profession> GetProfessionByName(string name)
         {
-            throw new NotImplementedException();
+            return await _appDbContext.Professions
+                .FirstOrDefaultAsync(p => p.ProfessionName == name);
         }
 
-        public Task<Profession> UpdateProfession(Profession profession)
+        public async Task<IEnumerable<Profession>> GetProfessions()
         {
-            throw new NotImplementedException();
+            return await _appDbContext.Professions.ToListAsync();
+        }
+
+        public async  Task<IEnumerable<Profession>> SearchProfession(string name)
+        {
+            IQueryable<Profession> query = _appDbContext.Professions;
+            if (!string.IsNullOrEmpty(name))
+            {
+                query = query.Where(p => p.ProfessionName.Contains(name));
+            }
+            return await query.ToListAsync();
+        }
+
+        public async Task<Profession> UpdateProfession(Profession profession)
+        {
+            var result = await _appDbContext.Professions
+                .FirstOrDefaultAsync(p => p.ProfessionId == profession.ProfessionId);
+            if (result!=null)
+            {
+                result.ProfessionName = profession.ProfessionName;
+                result.ProfessionSectorId = profession.ProfessionSectorId;
+
+                await _appDbContext.SaveChangesAsync();
+                return result;
+            }
+            return null;
         }
     }
 }
