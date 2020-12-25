@@ -31,5 +31,10 @@
     </div>
 
     <script src="_framework/blazor.server.js"></script>
+    <script>
+        function addToLocalStorage(key, value) { localStorage[key] = value; }
+        function readLocalStorage(key) { return localStorage[key];}
+    </script>
+
 </body>
 </html>
