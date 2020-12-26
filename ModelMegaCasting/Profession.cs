@@ -14,5 +14,7 @@ namespace ModelMegaCasting
         public int ProfessionSectorId { get; set; }
         [ValidateComplexType]
         public ProfessionSector ProfessionSector { get; set; }
+
+        public List<Offer> Offers { get; set; }
     }
 }

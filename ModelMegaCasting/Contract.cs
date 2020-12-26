@@ -20,5 +20,9 @@ namespace ModelMegaCasting
         
         
         public ContractType ContractType { get; set; }
+        [Required]
+        public int OfferId { get; set; }
+        [ValidateComplexType]
+        public Offer Offer { get; set; }
     }
 }

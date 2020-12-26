@@ -1,4 +1,5 @@
-using ApiMegaCasting.Models;
+using ModelMegaCasting;
+using ApiMegaCasting.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +31,8 @@ namespace ApiMegaCasting
         {
             services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
+            services.AddScoped<IProfessionRepository, ProfessionRepository>();
+            services.AddScoped<IProfessionSectorRepository, ProfessionSectorRepository>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

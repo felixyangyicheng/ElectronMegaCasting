@@ -26,5 +26,6 @@ namespace ModelMegaCasting
         public string PostCode { get; set; }
         [Required]
         public string City { get; set; }
+        public List<Offer> Offers { get; set; }
     }
 }
