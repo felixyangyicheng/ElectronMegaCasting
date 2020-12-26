@@ -11,7 +11,7 @@ namespace ApiMegaCasting.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProfessionController : ControllerBase
+    public class ProfessionsController : ControllerBase
     {
         #region Attribut
 
@@ -20,7 +20,7 @@ namespace ApiMegaCasting.Controllers
 
         #region Constructor
 
-        public ProfessionController(IProfessionRepository professionRepository)
+        public ProfessionsController(IProfessionRepository professionRepository)
         {
             this._professionRepository = professionRepository;
         }
