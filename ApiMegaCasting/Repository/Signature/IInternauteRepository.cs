@@ -9,10 +9,10 @@ namespace ApiMegaCasting.Repository.Signature
     {
         //Liste de tous les internautes
         Task<IEnumerable<Internaute>> GetInternautes();
-        //Internaute par id
-        Task<Internaute> GetInternaute(int idInternaute);
         //Liste Internaute par Nom
         Task<IEnumerable<Internaute>> Search(string nom, Civilite? civilite);
+        //Internaute par id
+        Task<Internaute> GetInternaute(int idInternaute);
         //Internaute par login
         Task<Internaute> GetInternauteByLogin(string login);
         //Internaute par email
