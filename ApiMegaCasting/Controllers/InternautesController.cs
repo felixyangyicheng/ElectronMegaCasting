@@ -36,11 +36,11 @@ namespace ApiMegaCasting.Controllers
         #endregion
         #region Liste des internautes par Login
         //[HttpGet("{search}/{name}/{gender?}")]
-        //Api/employees/search/john/Mr
+        //Api/Internautes/search/john/Mr
         [HttpGet("{search}")]
-        // api/employees/search?name=john
-        // api/employees/search?name=john&gender=Mr
-        // api/employees/search?gender=Mr
+        // api/Internautes/search?name=john
+        // api/Internautes/search?name=john&gender=Mr
+        // api/Internautes/search?gender=Mr
         public async Task<ActionResult<IEnumerable<Internaute>>> Search(string name, Civilite? civilite)
         {
             try

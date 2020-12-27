@@ -20,6 +20,8 @@ namespace ApiMegaCasting.Repository.Signature
         Task<Partenaire> GetPartenaireByEmail(string email);
         //Partenaire par libelle
         Task<Partenaire> GetPartenaireByName(string libelle);
+        //Partenaire par login
+        Task<Partenaire> GetPartenaireByLogin(string login);
         //Ajouter un partenaire
         Task<Partenaire> AddPartenaire(Partenaire partenaire);
         //Mettre à jour un partenaire

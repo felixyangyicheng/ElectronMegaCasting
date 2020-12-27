@@ -45,6 +45,11 @@ namespace ApiMegaCasting.Repository
             return await _appDbContext.Partenaires.FirstOrDefaultAsync(p => p.Email == email);
         }
 
+        public async Task<Partenaire> GetPartenaireByLogin(string login)
+        {
+            return await _appDbContext.Partenaires.FirstOrDefaultAsync(p => p.Login == login);
+        }
+
         public async Task<Partenaire> GetPartenaireByName(string libelle)
         {
             return await _appDbContext.Partenaires.FirstOrDefaultAsync(p => p.Libelle == libelle);
