@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ApiMegaCasting.Repository.Signature;
 
 namespace ApiMegaCasting
 {
@@ -31,8 +32,22 @@ namespace ApiMegaCasting
         {
             services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
-            services.AddScoped<IProfessionRepository, ProfessionRepository>();
-            services.AddScoped<IProfessionSectorRepository, ProfessionSectorRepository>();
+
+            #region Repository
+            services.AddScoped<ICiviliteRepository, CiviliteRepository>();
+            services.AddScoped<IContratRepository, ContratRepository>();
+            services.AddScoped<IDomaineMetierRepository, DomaineMetierRepository>();
+            services.AddScoped<IEmployeRepository, EmployeRepository>();
+            services.AddScoped<IGroupeEmployeRepository, GroupeEmployeRepository>();
+            services.AddScoped<IInternauteRepository, InternauteRepository>();
+            services.AddScoped<IMertierRepository, MetierRepository>();
+            services.AddScoped<IOffreInternauteRepository, OffreInternauteRepository>();
+            services.AddScoped<IOffreRepository, OffreRepository>();
+            services.AddScoped<IPartenaireRepository, PartenaireRepository>();
+            services.AddScoped<IStudioRepository, StudioRepository>();
+            services.AddScoped<ITypeContratRepository, TypeContratRepository>();
+            #endregion
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

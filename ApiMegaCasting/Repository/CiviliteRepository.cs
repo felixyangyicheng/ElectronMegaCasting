@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace ApiMegaCasting.Repository
 {
-    public class CiviliteRepository : ICiviliteRepository
+    public class CiviliteRepository: ICiviliteRepository
     {
         private readonly AppDbContext _appDbContext;
         public CiviliteRepository(AppDbContext appDbContext)
         {
             this._appDbContext = appDbContext;
         }
+
         public async Task<Civilite> GetCivilite(int civiliteId)
         {
             return await _appDbContext.Civilites
