@@ -30,7 +30,7 @@ namespace ApiMegaCasting.Controllers
             {
 
                 return StatusCode(StatusCodes.Status500InternalServerError,
-                                  "Erreur execption non capturée de database, cela peut être une erreur de connexion");
+                    "Erreur execption non capturée de database, cela peut être une erreur de connexion");
             }
         }
         #endregion
@@ -160,6 +160,21 @@ namespace ApiMegaCasting.Controllers
             {
                 if (id != internaute.Id)
                     return BadRequest("Id Internaute ne correspond pas ");
+
+                var iEmail = await _internauteRepository.GetInternauteByEmail(internaute.Email);
+                var iLogin = await _internauteRepository.GetInternauteByLogin(internaute.Login);
+
+                if (iEmail != null)
+                {
+                    ModelState.AddModelError("Email", "Email existe déjà");
+                    return BadRequest(ModelState);
+                }
+                if (iLogin != null)
+                {
+                    ModelState.AddModelError("Login", "Login existe déjà");
+                    return BadRequest(ModelState);
+                }
+                
                 var iToUpdate = await _internauteRepository 
                     .GetInternaute(id);
                 if (iToUpdate==null)
