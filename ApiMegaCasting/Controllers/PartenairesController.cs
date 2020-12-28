@@ -63,7 +63,7 @@ namespace ApiMegaCasting.Controllers
         {
             try
             {
-                var result = await _partenaireRepository.SearchByName(adresse);
+                var result = await _partenaireRepository.SearchByAddress(adresse);
                 if (result.Any())
                 {
                     return Ok(result);
