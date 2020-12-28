@@ -36,7 +36,7 @@ namespace ApiMegaCasting.Controllers
         #region Liste des partenaires par libelle
         //Api/Partenaires/name/john
         [HttpGet("{name}")]
-        public  async Task<ActionResult<IEnumerable<Partenaire>>> SearchName(string libelle)
+        public async Task<ActionResult<IEnumerable<Partenaire>>> SearchName(string libelle)
         {
             try
             {
@@ -80,7 +80,7 @@ namespace ApiMegaCasting.Controllers
         #endregion
         #region partenaire par id
         [HttpGet("{id:int}")]
-        public  async Task<ActionResult<Partenaire>> GetPartenaire(int id)
+        public async Task<ActionResult<Partenaire>> GetPartenaire(int id)
         {
             try
             {
@@ -100,7 +100,7 @@ namespace ApiMegaCasting.Controllers
         }
         #endregion
         #region partenaire par email
-        [HttpGet("{email:string}")]
+        [HttpGet("{findemail}")]
         public async Task<ActionResult<Partenaire>> GetPartenaireByEmail(string email)
         {
             try
@@ -118,7 +118,7 @@ namespace ApiMegaCasting.Controllers
         }
         #endregion
         #region partenaire par libellé
-        [HttpGet("{libelle:string}")]
+        [HttpGet("{findname}")]
         public async Task<ActionResult<Partenaire>> GetPartenaireByName(string libelle)
         {
             try
@@ -141,7 +141,7 @@ namespace ApiMegaCasting.Controllers
 
         #region Ajouter
         [HttpPost]
-        public  async Task<ActionResult<Partenaire>> CreatePartenaire(Partenaire partenaire)
+        public async Task<ActionResult<Partenaire>> CreatePartenaire(Partenaire partenaire)
         {
             try
             {
@@ -192,7 +192,7 @@ namespace ApiMegaCasting.Controllers
                 }
 
                 var pToUpdate = await _partenaireRepository.GetPartenaire(id);
-                if(pToUpdate==null) return NotFound($"Partenaire avec Id={id} n'a pas été trouvé");
+                if (pToUpdate == null) return NotFound($"Partenaire avec Id={id} n'a pas été trouvé");
                 return await _partenaireRepository.UpdatePartenaire(partenaire);
             }
             catch (Exception)
@@ -205,12 +205,12 @@ namespace ApiMegaCasting.Controllers
         #endregion
         #region Supprimer
         [HttpDelete("{id:int}")]
-        public  async Task<ActionResult<Partenaire>> DeletePartenaire(int id)
+        public async Task<ActionResult<Partenaire>> DeletePartenaire(int id)
         {
             try
             {
                 var PtoDelete = await _partenaireRepository.GetPartenaire(id);
-                if (PtoDelete==null)
+                if (PtoDelete == null)
                 {
                     return NotFound($"Partenaire avec Id={id} n'a pas été trouvé");
 

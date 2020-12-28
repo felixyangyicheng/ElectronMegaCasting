@@ -35,7 +35,7 @@ namespace ApiMegaCasting.Controllers
         #endregion
         #region Liste de métiers par libellé
         [HttpGet("{Search}")]
-        public  async Task<ActionResult<IEnumerable<Metier>>> Search (string libelle)
+        public async Task<ActionResult<IEnumerable<Metier>>> Search(string libelle)
         {
             try
             {
@@ -61,7 +61,7 @@ namespace ApiMegaCasting.Controllers
             try
             {
                 var result = await _metierRepository.GetMetier(id);
-                if (result==null)
+                if (result == null)
                 {
                     return NotFound();
                 }
@@ -75,7 +75,7 @@ namespace ApiMegaCasting.Controllers
         }
         #endregion
         #region Métier par libéllé
-        [HttpGet("{libelle:string}")]
+        [HttpGet("{name}")]
 
         public async Task<ActionResult<Metier>> GetMetierByName(string libelle)
         {
@@ -101,13 +101,13 @@ namespace ApiMegaCasting.Controllers
         {
             try
             {
-                if (metier==null)
+                if (metier == null)
                 {
                     return BadRequest();
                 }
 
                 var m = await _metierRepository.GetMetierByName(metier.Libelle);
-                if (m!=null)
+                if (m != null)
                 {
                     ModelState.AddModelError("Libelle", "Libellé existe déjà");
                     return BadRequest(ModelState);
@@ -125,7 +125,7 @@ namespace ApiMegaCasting.Controllers
         #endregion
         #region Mettre à jour
         [HttpPut]
-        public  async Task<ActionResult<Metier>> UpdateMetier(int id, Metier metier)
+        public async Task<ActionResult<Metier>> UpdateMetier(int id, Metier metier)
         {
             try
             {

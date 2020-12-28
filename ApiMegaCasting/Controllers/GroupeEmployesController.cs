@@ -35,12 +35,12 @@ namespace ApiMegaCasting.Controllers
         #endregion
         #region Groupe par id
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<GroupeEmploye>> GetEmploye(int id)
+        public async Task<ActionResult<GroupeEmploye>> GetGroupeEmploye(int id)
         {
             try
             {
                 var result = await _groupeEmployeRepository.GetGroupeEmploye(id);
-                if (result==null)
+                if (result == null)
                 {
                     return NotFound();
                 }
@@ -54,6 +54,7 @@ namespace ApiMegaCasting.Controllers
         }
         #endregion
         #region Groupe par libelle
+        [HttpGet("{name}")]
         public async Task<ActionResult<GroupeEmploye>> GetEmployeByLibelle(string libelle)
         {
             try
@@ -90,7 +91,7 @@ namespace ApiMegaCasting.Controllers
                     return BadRequest(ModelState);
                 }
                 var createGroupe = await _groupeEmployeRepository.AddGroupeEmploye(groupe);
-                return CreatedAtAction(nameof(GetEmploye), new { id = createGroupe.Id }, createGroupe);
+                return CreatedAtAction(nameof(GetGroupeEmploye), new { id = createGroupe.Id }, createGroupe);
             }
             catch (Exception)
             {
@@ -105,7 +106,7 @@ namespace ApiMegaCasting.Controllers
         {
             try
             {
-                if (id!=groupe.Id)
+                if (id != groupe.Id)
                 {
                     return BadRequest("Id de groupe ne correspond pas");
                 }
@@ -122,13 +123,13 @@ namespace ApiMegaCasting.Controllers
         }
         #endregion
         #region Supprimer un groupe
-        [HttpDelete("{id:int")]
+        [HttpDelete("{id:int}")]
         public async Task<ActionResult<GroupeEmploye>> DeleteGroupeEmploye(int id)
         {
             try
             {
                 var gToDelete = await _groupeEmployeRepository.GetGroupeEmploye(id);
-                if (gToDelete==null)
+                if (gToDelete == null)
                 {
                     return NotFound($"GroupeEmploye avec Id={id} n'a pas été trouvé");
                 }

@@ -52,7 +52,7 @@ namespace ApiMegaCasting.Controllers
                   "Erreur execption non capturée de database, cela peut être une erreur de connexion");
             }
         }
-        [HttpGet("{libelle:string}")]
+        [HttpGet("{name}")]
         // id map with  GetEmployee(int id) below
         public async Task<ActionResult<DomaineMetier>> GetDomaineMetierByName(string libelle)
         {

@@ -1,0 +1,22 @@
+﻿@page "/civilites"
+@inherits CiviliteListBase
+<h3>CiviliteList</h3>
+
+@if (_civilites == null)
+{
+    <div class="spinner"></div>
+}
+else
+{
+
+    @foreach (var c in _civilites)
+    {
+
+
+        <h3>
+            @c.Id @c.Libelle
+        </h3>
+
+    }
+
+}

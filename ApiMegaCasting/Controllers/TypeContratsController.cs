@@ -19,7 +19,7 @@ namespace ApiMegaCasting.Controllers
         }
         #region Liste des types
         [HttpGet]
-        public  async Task<ActionResult> GetTypeContrats()
+        public async Task<ActionResult> GetTypeContrats()
         {
             try
             {
@@ -39,7 +39,7 @@ namespace ApiMegaCasting.Controllers
             try
             {
                 var result = await _typeContratRepository.GetTypeContrat(id);
-                if (result==null)
+                if (result == null)
                 {
                     return NotFound();
                 }
@@ -54,7 +54,7 @@ namespace ApiMegaCasting.Controllers
         #endregion
         #region Ajouter
         [HttpPost]
-        public  async Task<ActionResult<TypeContrat>> CreateTypeContrat(TypeContrat typeContrat)
+        public async Task<ActionResult<TypeContrat>> CreateTypeContrat(TypeContrat typeContrat)
         {
             try
             {
@@ -72,14 +72,14 @@ namespace ApiMegaCasting.Controllers
         #endregion
         #region Mettre à jour
         [HttpPut()]
-        public  async Task<ActionResult<TypeContrat>> UpdateTypeContrat(int id, TypeContrat typeContrat)
+        public async Task<ActionResult<TypeContrat>> UpdateTypeContrat(int id, TypeContrat typeContrat)
         {
             try
             {
-                if(id!=typeContrat.Id) return BadRequest("Id typecontrat ne correspond pas ");
+                if (id != typeContrat.Id) return BadRequest("Id typecontrat ne correspond pas ");
                 //Need to verify and add GetTypeContratByName in its Repository
                 var tToUpdate = await _typeContratRepository.GetTypeContrat(id);
-                if(tToUpdate==null) return NotFound($"typeContrat avec Id={id} n'a pas été trouvé");
+                if (tToUpdate == null) return NotFound($"typeContrat avec Id={id} n'a pas été trouvé");
                 return await _typeContratRepository.UpdateTypeContrat(typeContrat);
             }
             catch (Exception)
@@ -92,12 +92,12 @@ namespace ApiMegaCasting.Controllers
         #endregion
         #region Supprimer
         [HttpDelete("{id:int}")]
-        public  async Task<ActionResult<TypeContrat>> DeleteTypeContrat(int id)
+        public async Task<ActionResult<TypeContrat>> DeleteTypeContrat(int id)
         {
             try
             {
                 var tToDelete = await _typeContratRepository.GetTypeContrat(id);
-                if (tToDelete==null)
+                if (tToDelete == null)
                 {
                     return NotFound($"TypeContrat avec Id={id} n'a pas été trouvé");
                 }

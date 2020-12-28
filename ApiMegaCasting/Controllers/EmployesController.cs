@@ -37,13 +37,13 @@ namespace ApiMegaCasting.Controllers
         }
         #endregion
         #region Employé par Id
-        [HttpGet("{id:int}")] 
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<Employe>> GetEmploye(int id)
         {
             try
             {
                 var result = await _employeRepository.GetEmploye(id);
-                if (result==null)
+                if (result == null)
                 {
                     return NotFound();
                 }
@@ -57,7 +57,7 @@ namespace ApiMegaCasting.Controllers
         }
         #endregion
         #region Employé par Login
-        [HttpGet("{login:string}")]
+        [HttpGet("{login}")]
         public async Task<ActionResult<Employe>> GetEmployeByLogin(string login)
         {
             try
@@ -82,12 +82,12 @@ namespace ApiMegaCasting.Controllers
         {
             try
             {
-                if (id!=employe.Id)
+                if (id != employe.Id)
                 {
                     return BadRequest("Employe Id ne correspond pas");
                 }
                 var eToUpdate = await _employeRepository.GetEmploye(id);
-                if (eToUpdate==null)
+                if (eToUpdate == null)
                 {
                     return NotFound($"Employe avec Id={id} n'a pas été trouvé");
                 }
@@ -107,12 +107,12 @@ namespace ApiMegaCasting.Controllers
         {
             try
             {
-                if (employe==null)
+                if (employe == null)
                 {
                     return BadRequest();
                 }
                 var emp = await _employeRepository.GetEmployeByLogin(employe.Login);
-                if (emp!=null)
+                if (emp != null)
                 {
                     ModelState.AddModelError("Employe", "Employe login existe déjà.");
                     return BadRequest(ModelState);
@@ -135,7 +135,7 @@ namespace ApiMegaCasting.Controllers
             try
             {
                 var employeToDelete = await _employeRepository.GetEmploye(id);
-                if (employeToDelete==null)
+                if (employeToDelete == null)
                 {
                     return NotFound($"Employe avec Id={id} n'a pas été trouvé");
                 }

@@ -66,7 +66,7 @@ namespace ApiMegaCasting.Controllers
             try
             {
                 var result = await _internauteRepository.GetInternaute(id);
-                if (result==null)
+                if (result == null)
                 {
                     return NotFound();
                 }
@@ -80,7 +80,7 @@ namespace ApiMegaCasting.Controllers
         }
         #endregion
         #region Internaute par Login
-        [HttpGet("{login:string}")]
+        [HttpGet("{login}")]
         public async Task<ActionResult<Internaute>> GetInternauteByName(string login)
         {
             try
@@ -100,7 +100,7 @@ namespace ApiMegaCasting.Controllers
         }
         #endregion
         #region Internaute par Email
-        [HttpGet("{email:string}")]
+        [HttpGet("{email}")]
         public async Task<ActionResult<Internaute>> GetInternauteByEmail(string email)
         {
             try
@@ -125,19 +125,19 @@ namespace ApiMegaCasting.Controllers
         {
             try
             {
-                if (internaute==null)
+                if (internaute == null)
                 {
                     return BadRequest();
                 }
                 var iEmail = await _internauteRepository.GetInternauteByEmail(internaute.Email);
                 var iLogin = await _internauteRepository.GetInternauteByLogin(internaute.Login);
 
-                if (iEmail!=null)
+                if (iEmail != null)
                 {
                     ModelState.AddModelError("Email", "Email existe déjà");
                     return BadRequest(ModelState);
                 }
-                if(iLogin != null)
+                if (iLogin != null)
                 {
                     ModelState.AddModelError("Login", "Login existe déjà");
                     return BadRequest(ModelState);
@@ -174,10 +174,10 @@ namespace ApiMegaCasting.Controllers
                     ModelState.AddModelError("Login", "Login existe déjà");
                     return BadRequest(ModelState);
                 }
-                
-                var iToUpdate = await _internauteRepository 
+
+                var iToUpdate = await _internauteRepository
                     .GetInternaute(id);
-                if (iToUpdate==null)
+                if (iToUpdate == null)
                 {
                     return NotFound($"Internaute avec Id={id} n'a pas été trouvé");
                 }
@@ -197,7 +197,7 @@ namespace ApiMegaCasting.Controllers
             try
             {
                 var iToDelete = await _internauteRepository.GetInternaute(id);
-                if (iToDelete==null)
+                if (iToDelete == null)
                 {
                     return NotFound($"Internaute avec Id={id} n'a pas été trouvé");
                 }

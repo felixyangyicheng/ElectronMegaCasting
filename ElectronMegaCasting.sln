@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectronMegaCasting", "ElectronMegaCasting\ElectronMegaCasting.csproj", "{B2922229-CCF4-47EF-8CAC-CA4BD4EFF072}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelMegaCasting", "ModelMegaCasting\ModelMegaCasting.csproj", "{D2031DDD-4560-4DA4-8C4E-C571AFDA6D9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelMegaCasting", "ModelMegaCasting\ModelMegaCasting.csproj", "{D2031DDD-4560-4DA4-8C4E-C571AFDA6D9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiMegaCasting", "ApiMegaCasting\ApiMegaCasting.csproj", "{88A4603C-98A7-487A-803B-64EE86025B3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiMegaCasting", "ApiMegaCasting\ApiMegaCasting.csproj", "{88A4603C-98A7-487A-803B-64EE86025B3D}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D2031DDD-4560-4DA4-8C4E-C571AFDA6D9D} = {D2031DDD-4560-4DA4-8C4E-C571AFDA6D9D}
 	EndProjectSection

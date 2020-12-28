@@ -90,8 +90,8 @@ namespace ApiMegaCasting.Controllers
         }
         #endregion
         #region Offre par code
-        [HttpGet("{code:string}")]
-        public  async Task<ActionResult<Offre>> GetOffreByCode(string code)
+        [HttpGet("{code}")]
+        public async Task<ActionResult<Offre>> GetOffreByCode(string code)
         {
             try
             {
@@ -113,7 +113,7 @@ namespace ApiMegaCasting.Controllers
         {
             try
             {
-                if (offre==null)
+                if (offre == null)
                 {
                     return BadRequest();
 
@@ -145,7 +145,7 @@ namespace ApiMegaCasting.Controllers
                 if (id != offre.Id)
                     return BadRequest("Id Offre ne correspond pas");
                 var oToUpdate = await _offreRepository.GetOffre(id);
-                if (oToUpdate==null)
+                if (oToUpdate == null)
                 {
                     return NotFound($"Offre avec Id={id} n'a pas été trouvée");
                 }
@@ -166,7 +166,7 @@ namespace ApiMegaCasting.Controllers
             try
             {
                 var oToDelete = await _offreRepository.GetOffre(id);
-                if(oToDelete==null)
+                if (oToDelete == null)
                     return NotFound($"Offre avec Id={id} n'a pas été trouvée");
                 return await _offreRepository.DeleteOffre(id);
             }

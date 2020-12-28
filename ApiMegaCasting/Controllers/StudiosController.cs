@@ -60,7 +60,7 @@ namespace ApiMegaCasting.Controllers
         [HttpGet("{address}")]
         // api/Partenaires/address?adresse=john
 
-        public async Task<ActionResult<IEnumerable<Studio>>> SearchAddress (string adresse)
+        public async Task<ActionResult<IEnumerable<Studio>>> SearchAddress(string adresse)
         {
             try
             {
@@ -80,12 +80,12 @@ namespace ApiMegaCasting.Controllers
         #endregion
         #region studio par id
         [HttpGet("{id:int}")]
-        public  async Task<ActionResult<Studio>> GetStudio(int id)
+        public async Task<ActionResult<Studio>> GetStudio(int id)
         {
             try
             {
                 var result = await _studioRepository.GetStudio(id);
-                if (result==null)
+                if (result == null)
                 {
                     return NotFound();
                 }
@@ -99,7 +99,7 @@ namespace ApiMegaCasting.Controllers
         }
         #endregion
         #region studio par email
-        [HttpGet("{email:string}")]
+        [HttpGet("{findemail}")]
         public async Task<ActionResult<Studio>> GetStudioByEmail(string email)
         {
             try
@@ -116,7 +116,7 @@ namespace ApiMegaCasting.Controllers
         }
         #endregion
         #region studion par libellé
-        [HttpGet("{libelle:string}")]
+        [HttpGet("{findname}")]
         public async Task<ActionResult<Studio>> GetStudioByName(string libelle)
         {
             try
@@ -194,12 +194,12 @@ namespace ApiMegaCasting.Controllers
         #region Supprimer
         [HttpDelete("{id:int}")]
 
-        public  async Task<ActionResult<Studio>> DeleteStudio(int id)
+        public async Task<ActionResult<Studio>> DeleteStudio(int id)
         {
             try
             {
                 var sToDelete = await _studioRepository.GetStudio(id);
-                if (sToDelete==null)
+                if (sToDelete == null)
                 {
                     return NotFound($"Studio avec Id={id} n'a pas été trouvé");
                 }

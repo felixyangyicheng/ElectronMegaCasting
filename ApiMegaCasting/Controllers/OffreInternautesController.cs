@@ -20,7 +20,7 @@ namespace ApiMegaCasting.Controllers
 
         #region Liste des Offre-internaute
         [HttpGet]
-        public  async Task<ActionResult> GetOffreInternautes()
+        public async Task<ActionResult> GetOffreInternautes()
         {
             try
             {

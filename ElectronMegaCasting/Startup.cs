@@ -1,4 +1,5 @@
 using ElectronMegaCasting.Data;
+using ElectronMegaCasting.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -30,6 +31,10 @@ namespace ElectronMegaCasting
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
             services.AddSingleton<AppData>();
+            services.AddHttpClient<ICiviliteService, CiviliteService>(client=>
+            {
+                client.BaseAddress = new Uri("https://localhost:44345/");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

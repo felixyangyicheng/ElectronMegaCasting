@@ -53,7 +53,7 @@ namespace ApiMegaCasting.Controllers
         }
 
         // GET api/<ContratsController>/code
-        [HttpGet("{code:string}")]
+        [HttpGet("{code}")]
         public async Task<ActionResult<Contrat>> GetContrat(string code)
         {
             try
