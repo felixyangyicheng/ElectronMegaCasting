@@ -41,7 +41,11 @@ namespace ApiMegaCasting.Controllers
             try
             {
                 var result = await _contratRepository.GetContrat(id);
-                if (result == null) return NotFound();
+                if (result == null)
+                {
+
+                    return NotFound();
+                } 
                 return result;
             }
             catch (Exception)
@@ -52,23 +56,23 @@ namespace ApiMegaCasting.Controllers
             }
         }
 
-        // GET api/<ContratsController>/code
-        [HttpGet("{code}")]
-        public async Task<ActionResult<Contrat>> GetContrat(string code)
-        {
-            try
-            {
-                var result = await _contratRepository.GetContratByCode(code);
-                if (result == null) return NotFound();
-                return result;
-            }
-            catch (Exception)
-            {
+        //// GET api/<ContratsController>/code
+        //[HttpGet("{code}")]
+        //public async Task<ActionResult<Contrat>> GetContrat(string code)
+        //{
+        //    try
+        //    {
+        //        var result = await _contratRepository.GetContratByCode(code);
+        //        if (result == null) return NotFound();
+        //        return result;
+        //    }
+        //    catch (Exception)
+        //    {
 
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Erreur execption non capturée de database, cela peut être une erreur de connexion");
-            }
-        }
+        //        return StatusCode(StatusCodes.Status500InternalServerError,
+        //            "Erreur execption non capturée de database, cela peut être une erreur de connexion");
+        //    }
+        //}
 
         // POST api/<ContratsController>
         [HttpPost]
@@ -142,7 +146,7 @@ namespace ApiMegaCasting.Controllers
                       "Erreur execption non capturée de database, cela peut être une erreur de connexion");
             }
         }
-        //Api/employees/search/code
+        //Api/contrat/search/code
         [HttpGet("{Search}")]
         public async Task<ActionResult<IEnumerable<Contrat>>> Search(string code)
         {

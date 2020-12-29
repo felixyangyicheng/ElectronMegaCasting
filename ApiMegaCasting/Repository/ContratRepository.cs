@@ -39,8 +39,8 @@ namespace ApiMegaCasting.Repository
         public async Task<Contrat> GetContrat(int IdContrat)
         {
             return await _appDbContext.Contrats
-                .Include(c => c.IdOffreNavigation)
-                .Include(c=>c.IdTypeContratNavigation)
+                //.Include(c => c.IdOffreNavigation)
+                //.Include(c => c.IdTypeContratNavigation)
                 .FirstOrDefaultAsync(c => c.Id == IdContrat);
         }
 
