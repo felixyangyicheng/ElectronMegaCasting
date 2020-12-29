@@ -12,12 +12,12 @@ namespace ElectronMegaCasting.Pages
     {
         [Inject]
         public ICiviliteService _CiviliteService { get; set; }
-        public IEnumerable<Civilite> _civilites { get; set; }
+        public IEnumerable<Civilite> Civilites { get; set; }
 
 
         protected override async Task OnInitializedAsync()
         {
-            _civilites = (await _CiviliteService.GetCivilites()).ToList();
+            Civilites = (await _CiviliteService.GetCivilites()).ToList();
         }
     }
 }

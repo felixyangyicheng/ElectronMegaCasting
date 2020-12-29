@@ -1,0 +1,25 @@
+﻿@page "/contrats"
+@inherits ContratListBase
+
+<h1>ContratList</h1>
+<h3>Combien de contrats ont été sélectionnnés? -@SelectedContratCount</h3>
+<input type="checkbox" id="showFooter" @bind="ShowFooter"/>
+@if (Contrats == null)
+{
+    <div class="spinner"></div>
+}
+else
+{
+    <div class="card-deck">
+        @foreach (var contart in Contrats)
+        {
+            <DisplayContrat
+                            Contrat="contart"
+                            ShowFooter="ShowFooter"
+                            OnContratSelection="ContratSelectionChanged"
+                            OnContratDeleted="ContratDeleted">
+
+            </DisplayContrat>
+        }
+    </div>
+}

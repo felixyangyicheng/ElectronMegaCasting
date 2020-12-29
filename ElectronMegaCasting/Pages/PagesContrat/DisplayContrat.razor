@@ -1,0 +1,31 @@
+﻿@inherits DisplayContratBase
+
+<div class="card m-3" style="min-width: 18rem; max-width:30.5%;">
+    <div class="card-header">
+        <h3>
+            <input type="checkbox" @onchange="CheckBoxChanged" />
+            @Contrat.Id @Contrat.CodeContrat
+        </h3>
+    </div>
+
+
+
+
+    @if (ShowFooter)
+    {
+
+
+        <div class="card-footer text-center">
+            <a href="@($"employeedetails/{Contrat.Id}")" class="btn btn-primary m-1">Détaille</a>
+
+            <a href="@($"editemployee/{Contrat.Id}")" class="btn btn-primary m-1">Modification</a>
+
+            <button type="button" class="btn btn-danger m-1" @onclick="Delete_Click">
+                Suppression
+            </button>
+        </div>
+    }
+</div>
+<Confirm @ref="DeleteConfirmation" ConfirmationChanged="ConfirmDelete_Click"
+         ConfirmationMessage=@($"Are you sure you want to delete \"{Contrat.CodeContrat}\"")>
+</Confirm>
