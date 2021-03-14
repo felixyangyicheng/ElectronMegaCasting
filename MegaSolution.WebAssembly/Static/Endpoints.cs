@@ -8,7 +8,7 @@ namespace MegaSolution.WebAssembly.Static
     public static class Endpoints
     {
 #if DEBUG
-        public static string BaseUrl = "https://localhost:44382/";
+        public static string BaseUrl = "https://localhost:44321/";
 #else
         public static string BaseUrl = "";
 #endif
