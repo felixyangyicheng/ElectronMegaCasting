@@ -47,7 +47,8 @@ namespace ApiMegaCasting
             services.AddScoped<IStudioRepository, StudioRepository>();
             services.AddScoped<ITypeContratRepository, TypeContratRepository>();
             #endregion
-
+            services.AddControllers().AddNewtonsoftJson(options=>
+            options.SerializerSettings.ReferenceLoopHandling=Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

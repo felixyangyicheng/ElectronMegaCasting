@@ -42,18 +42,22 @@ namespace ApiMegaCasting.Repository
         public async Task<GroupeEmploye> GetGroupeEmploye(int idGroupe)
         {
             return await _appDbContext.GroupeEmployes
+                 .Include(e => e.Employes)
                 .FirstOrDefaultAsync(e => e.Id == idGroupe);
         }
 
         public async Task<GroupeEmploye> GetGroupeEmployeByName(string libelle)
         {
             return await _appDbContext.GroupeEmployes
+                  .Include(e => e.Employes)
                 .FirstOrDefaultAsync(e => e.Libelle == libelle);
         }
 
         public async Task<IEnumerable<GroupeEmploye>> GetGroupeEmployes()
         {
-            return await _appDbContext.GroupeEmployes.ToListAsync();
+            return await _appDbContext.GroupeEmployes
+                  .Include(e => e.Employes)
+                  .ToListAsync();
         }
 
         public async Task<GroupeEmploye> UpdateGroupeEmploye(GroupeEmploye groupeEmploye)

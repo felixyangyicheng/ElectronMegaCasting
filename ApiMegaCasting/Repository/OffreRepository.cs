@@ -42,6 +42,7 @@ namespace ApiMegaCasting.Repository
         public async Task<Offre> GetOffre(int idOffre)
         {
             return await _appDbContext.Offres
+                .Include(o=>o.Contrats)
                 .Include(o=>o.IdEmployeNavigation)
                 .Include(o=>o.IdMetierNavigation)
                 .Include(o=>o.IdStudioNavigation)
@@ -51,6 +52,7 @@ namespace ApiMegaCasting.Repository
         public async Task<Offre> GetOffreByCode(string code)
         {
             return await _appDbContext.Offres
+                .Include(o => o.Contrats)
                 .Include(o => o.IdEmployeNavigation)
                 .Include(o => o.IdMetierNavigation)
                 .Include(o => o.IdStudioNavigation)

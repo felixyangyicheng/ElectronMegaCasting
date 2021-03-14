@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/civilites",
+      "launchUrl": "api/contrats",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

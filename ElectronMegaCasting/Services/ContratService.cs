@@ -39,12 +39,12 @@ namespace ElectronMegaCasting.Services
 
         public async Task<IEnumerable<Contrat>> GetContrats()
         {
-            return await _httpClient.GetJsonAsync<Contrat[]>($"api/contarts");
+            return await _httpClient.GetJsonAsync<Contrat[]>($"api/contrats");
         }
 
         public async Task<IEnumerable<Contrat>> Search(string codeContrat)
         {
-            return await _httpClient.GetJsonAsync<Contrat[]>($"api/contarts/search/{codeContrat}");
+            return await _httpClient.GetJsonAsync<Contrat[]>($"api/contrats/search?code={codeContrat}");
         }
 
         public async Task<Contrat> UpdateContrat(Contrat contrat)

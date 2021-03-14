@@ -38,18 +38,23 @@ namespace ApiMegaCasting.Repository
         public async Task<DomaineMetier> GetDomaineMetier(int IdDomaine)
         {
             return await _appDbContext.DomaineMetiers
+                 .Include(dm => dm.Metiers)
                      .FirstOrDefaultAsync(dm => dm.Id == IdDomaine);
         }
 
         public async Task<DomaineMetier> GetDomaineMetierByName(string libelle)
         {
             return await _appDbContext.DomaineMetiers
+                .Include(dm => dm.Metiers)
                 .FirstOrDefaultAsync(dm => dm.Libelle == libelle);
         }
 
         public async Task<IEnumerable<DomaineMetier>> GetDomaineMetiers()
         {
-            return await _appDbContext.DomaineMetiers.ToListAsync();
+            return await _appDbContext.DomaineMetiers
+                 .Include(dm => dm.Metiers)
+                 .ToListAsync();
+
         }
 
         public async Task<DomaineMetier> UpdateDomaineMetier(DomaineMetier domaine)

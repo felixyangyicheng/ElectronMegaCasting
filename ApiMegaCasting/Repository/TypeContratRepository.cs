@@ -41,12 +41,16 @@ namespace ApiMegaCasting.Repository
 
         public async Task<TypeContrat> GetTypeContrat(int idTypeContrat)
         {
-            return await _appDbContext.TypeContrats.FirstOrDefaultAsync(p => p.Id == idTypeContrat);
+            return await _appDbContext.TypeContrats
+                .Include(p=>p.Contrats)
+                .FirstOrDefaultAsync(p => p.Id == idTypeContrat);
         }
 
         public async Task<IEnumerable<TypeContrat>> GetTypeContrats()
         {
-            return await _appDbContext.TypeContrats.ToListAsync();
+            return await _appDbContext.TypeContrats
+                 .Include(p => p.Contrats)
+                .ToListAsync();
         }
 
         public async Task<TypeContrat> UpdateTypeContrat(TypeContrat TypeContrat)

@@ -47,18 +47,25 @@ namespace ApiMegaCasting.Repository
             return await _appDbContext.Employes
                 .Include(e => e.IdCiviliteNavigation)
                 .Include(e => e.IdGroupeEmployesNavigation)
+                .Include(e => e.Offres)
                 .FirstOrDefaultAsync(e => e.Id == idEmploye);
         }
 
         public async Task<Employe> GetEmployeByLogin(string login)
         {
             return await _appDbContext.Employes
+                 .Include(e => e.IdCiviliteNavigation)
+                .Include(e => e.IdGroupeEmployesNavigation)
+                .Include(e => e.Offres)
                 .FirstOrDefaultAsync(e => e.Login == login);
         }
 
         public async Task<IEnumerable<Employe>> GetEmployes()
         {
-            return await _appDbContext.Employes.ToListAsync();
+            return await _appDbContext.Employes
+                 .Include(e => e.IdCiviliteNavigation)
+                .Include(e => e.IdGroupeEmployesNavigation)
+                .Include(e => e.Offres).ToListAsync();
         }
 
         public async Task<IEnumerable<Employe>> Search(string nom, Civilite? civilite)

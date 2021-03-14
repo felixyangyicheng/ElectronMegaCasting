@@ -15,7 +15,7 @@ namespace ElectronMegaCasting.Services.Signature
         //Contrat par Id de contrat
         Task<Contrat> GetContrat(int IdContrat);
         //Rechercher Contrat avec le code de contrat
-        Task<Contrat> GetContratByCode(string codeContrat);
+        //Task<Contrat> GetContratByCode(string codeContrat);
         //Ajouter un contrat
         Task<Contrat> AddContrat(Contrat contrat);
         //Metter à jour un contrat

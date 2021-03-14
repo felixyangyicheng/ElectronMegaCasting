@@ -42,6 +42,7 @@ namespace ApiMegaCasting.Repository
         {
             return await _appDbContext.Metiers
                 .Include(m=>m.IdDomaineMetierNavigation)
+                .Include(m => m.Offres)
                 .FirstOrDefaultAsync(m => m.Id == idMetier);
         }
 
@@ -49,12 +50,16 @@ namespace ApiMegaCasting.Repository
         {
             return await _appDbContext.Metiers
                 .Include(m => m.IdDomaineMetierNavigation)
+                 .Include(m => m.Offres)
                 .FirstOrDefaultAsync(m => m.Libelle == libelle);
         }
 
         public async Task<IEnumerable<Metier>> GetMetiers()
         {
-            return await _appDbContext.Metiers.ToListAsync();
+            return await _appDbContext.Metiers
+                 .Include(m => m.Offres)
+                 .Include(m => m.IdDomaineMetierNavigation)
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<Metier>> Search(string libelle)
@@ -64,7 +69,10 @@ namespace ApiMegaCasting.Repository
             {
                 query = query.Where(m => m.Libelle.Contains(libelle));
             }
-            return await query.ToListAsync();
+            return await query
+                 .Include(m => m.Offres)
+                 .Include(m => m.IdDomaineMetierNavigation).
+                 ToListAsync();
         }
 
         public async Task<Metier> UpdateMetier(Metier metier)

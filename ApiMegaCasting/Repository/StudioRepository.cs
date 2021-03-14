@@ -41,7 +41,9 @@ namespace ApiMegaCasting.Repository
 
         public async Task<Studio> GetStudio(int idStudio)
         {
-            return await _appDbContext.Studios.FirstOrDefaultAsync(p => p.Id == idStudio);
+            return await _appDbContext.Studios
+                .Include(s=>s.Offres)
+                .FirstOrDefaultAsync(p => p.Id == idStudio);
         }
 
         public async Task<Studio> GetStudioByEmail(string email)
@@ -57,7 +59,9 @@ namespace ApiMegaCasting.Repository
 
         public async Task<IEnumerable<Studio>> GetStudios()
         {
-            return await _appDbContext.Studios.ToListAsync();
+            return await _appDbContext.Studios
+                .Include(s => s.Offres)
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<Studio>> SearchByAddress(string adresse)

@@ -18,12 +18,17 @@ namespace ApiMegaCasting.Repository
         public async Task<Civilite> GetCivilite(int civiliteId)
         {
             return await _appDbContext.Civilites
+                .Include(c=>c.Employes)
+                .Include(c=>c.Internautes)
                 .FirstOrDefaultAsync(c => c.Id == civiliteId);
         }
 
         public async Task<IEnumerable<Civilite>> GetCivilites()
         {
-            return await _appDbContext.Civilites.ToListAsync();
+            return await _appDbContext.Civilites
+                 .Include(c => c.Employes)
+                .Include(c => c.Internautes)
+                .ToListAsync();
         }
     }
 }
