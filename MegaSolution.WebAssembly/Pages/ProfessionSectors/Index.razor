@@ -1,5 +1,46 @@
-﻿<h3>Index</h3>
+﻿@page "/professionsectors/"
+@inherits IndexBase
 
-@code {
 
+<h3 class="card-title">Domain de profession</h3>
+<hr />
+<br />
+@if (Model == null)
+{
+    <LoadingMessage Message="Chargement des secteur de profession" />
+}
+else
+{
+
+    @if (Model.Count < 1)
+    {
+        <LoadingMessage Message="Il n'y a aucun secteur." />
+    }
+    else
+    {
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Libellé</th>
+   
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var sector in Model)
+                {
+                    <tr>
+                        <td>@sector.ProfessionSectorId</td>
+                        <td>@sector.SectorName</td>
+                        <td>
+                            <a href="/professionsectors/view/@sector.ProfessionSectorId" class="btn btn-primary">
+                                <span class="oi oi-book"></span>
+                            </a>
+                  
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
 }

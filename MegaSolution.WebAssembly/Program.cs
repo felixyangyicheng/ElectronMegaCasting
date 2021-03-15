@@ -40,6 +40,13 @@ namespace MegaSolution.WebAssembly
             builder.Services.AddTransient<IAuthenticationRepository, AuthenticationRepository>();
             builder.Services.AddTransient<IArtistRepository, ArtistRepository>();
             builder.Services.AddTransient<IContractRepository, ContractRepository>();
+
+            builder.Services.AddTransient<IContractTypeRepository, ContractTypeRepository>();
+            builder.Services.AddTransient<IProfessionRepository, ProfessionRepository>();
+            builder.Services.AddTransient<IProfessionSectorRepository, ProfessionSectorRepository>();
+            builder.Services.AddTransient<IStudioRepository, StudioRepository>();
+            builder.Services.AddTransient<IOfferRepository, OfferRepository>();
+
             builder.Services.AddOptions();
             builder.Services.AddAuthorizationCore();
             //builder.Services.AddTransient<IFileUpload, FileUpload>();

@@ -1,5 +1,39 @@
-﻿<h3>Index</h3>
+﻿@page "/contracttypes/"
+@inherits IndexBase
+@attribute [Authorize]
+<h3 class="card-title">Index</h3>
+<hr />
+<br />
+@if (Model == null)
+{
+    <LoadingMessage Message="Chargement des types de contrat" />
+}
+else
+{
 
-@code {
+    @if (Model.Count < 1)
+    {
+        <LoadingMessage Message="Il n'y a aucun type de contrat, cliquez sur 'Créer un auteur' pour commencer" />
+    }
+    else
+    {
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Libellé</th>
+           
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var type in Model)
+                {
+                    <tr>
+                        <td>@type.ContractTypeName</td>
 
+                     
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
 }

@@ -1,5 +1,45 @@
-﻿<h3>Index</h3>
+﻿@page "/studios/"
+@inherits IndexBase
 
-@code {
 
+<h3 class="card-title">Index</h3>
+<hr />
+<br />
+@if (Model == null)
+{
+    <LoadingMessage Message="Chargement des studios" />
+}
+else
+{
+    @if (Model.Count < 1)
+    {
+        <LoadingMessage Message="Il n'y a aucun studio. " />
+    }
+    else
+    {
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Libellé</th>
+                    <th>Opération</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var studio in Model)
+                {
+                    <tr>
+                        <td>@studio.StudioId</td>
+                        <td>@studio.StudioName</td>
+                        <td>
+                            <a href="/studios/view/@studio.StudioId" class="btn btn-primary">
+                                <span class="oi oi-book"></span>
+                            </a>
+           
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
 }
