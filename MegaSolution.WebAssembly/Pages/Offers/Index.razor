@@ -1,0 +1,71 @@
+﻿@page "/offers/"
+
+@inherits IndexBase
+
+<h3>Offres</h3>
+<hr />
+<br />
+@if (Model == null)
+{
+    <LoadingMessage Message="Chargement des offres" />
+}
+else
+{
+    <AuthorizeView Roles="Administrator">
+        <a href="/offers/create" class="btn btn-primary">
+            <span class="oi oi-plus"></span>
+            Créer offre
+        </a>
+    </AuthorizeView>
+
+
+
+    <hr />
+    <br />
+    <br />
+    <br />
+
+
+
+    @if (Model.Count < 1)
+    {
+        <LoadingMessage Message="Il n'y a pas de offre.
+                         Cliquez sur «Créer une offre» pour commencer " />
+    }
+    else
+    { 
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Titre</th>
+                    <th>Offre Description</th>
+                    <th>Studio</th>
+                    <th>Profession</th>
+                    <th>Opération</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var offer in Model)
+                {
+                    <tr>
+                        <td>@offer.OfferId</td>
+
+                        <td>@offer.Title</td>
+                        <td>@offer.OfferDescription</td>
+                        <td>@offer.Studio.StudioName</td>
+                        <td>@offer.Profession.ProfessionName</td>
+
+                        <td>
+                            <a href="/offers/view/@offer.OfferId" class="btn btn-primary">
+                                <span class="oi oi-book"></span>
+                            </a>
+           
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
