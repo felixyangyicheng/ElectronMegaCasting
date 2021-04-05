@@ -7,11 +7,9 @@ namespace MegaSolution.WebAssembly.Static
 {
     public static class Endpoints
     {
-#if DEBUG
-        public static string BaseUrl = "https://localhost:44321/";
-#else
-        public static string BaseUrl = "";
-#endif
+
+        public static string BaseUrl = "https://172.16.1.115/";
+
         public static string ArtistEndpoint = $"{BaseUrl}api/artists/";
         public static string ContractEndpoint = $"{BaseUrl}api/contracts/";
         public static string ContractTypeEndpoint = $"{BaseUrl}api/contracttypes/";
