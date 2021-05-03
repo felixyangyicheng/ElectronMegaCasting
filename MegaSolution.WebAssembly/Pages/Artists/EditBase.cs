@@ -16,8 +16,7 @@ namespace MegaSolution.WebAssembly.Pages.Artists
     {
         [Inject]
         public IArtistRepository _repo { get; set; }
-        [Inject]
-        public IFileUpload _fileUpload { get; set; }
+        
         [Inject]
         public NavigationManager _navManager { get; set; }
         [Inject]
@@ -98,8 +97,7 @@ namespace MegaSolution.WebAssembly.Pages.Artists
 
                     var resizedImageFile = await file.RequestImageFileAsync("image/png",
                 100, 100);
-                    var resizedCvFile = await file.RequestImageFileAsync("image/png",
-                100, 100);
+                    var resizedCvFile = await file.RequestImageFileAsync("image/png",100, 100);
 
                     var bufferImg = new byte[resizedImageFile.Size];
                     var bufferCv = new byte[resizedCvFile.Size];
